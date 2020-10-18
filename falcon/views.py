@@ -13,3 +13,6 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 # Create your views here.
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
