@@ -24,3 +24,11 @@ class Image(models.Model):
     insta_image = models.ImageField(upload_to='picha/',null=True)
     caption = models.TextField(null=True)
     likes = models.PositiveIntegerField(default=0)
+
+    @classmethod
+    def get_images(cls):
+        images = Image.objects.all()
+        return images
+
+    def __str__(self):
+       return str(self.caption)
