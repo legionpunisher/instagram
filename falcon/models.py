@@ -9,3 +9,12 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+    @classmethod
+    def get_profile(cls):
+        profile = Profile.objects.all()
+        return profile
+    @classmethod
+    def find_profile(cls,search_term):
+        profile = Profile.objects.filter(user__username__icontains=search_term)
+        return profile
