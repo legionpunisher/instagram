@@ -167,3 +167,22 @@ def follow(request,operation,id):
     elif operation=='unfollow':
         Follow.unfollow(request.user,current_user)
         return redirect('home')
+@login_required(login_url='/accounts/login/')
+def home(request):
+    images = Image.get_images()
+    comments = Comment.get_comment()
+    profile = Profile.get_profile()
+
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+        return redirect('home')
+
+    else:
+        form = CommentForm()
+
+    return render(request,"home.html",{"images":images, "comments":comments,"form": form,"profile":profile})
