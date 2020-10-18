@@ -19,7 +19,7 @@ class Profile(models.Model):
         profile = Profile.objects.filter(user__username__icontains=search_term)
         return profile
 class Image(models.Model):
-    posted_by = models.ForeignKey(User, null=True)
+    posted_by = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE,null=True)
     insta_image = models.ImageField(upload_to='picha/',null=True)
     caption = models.TextField(null=True)
@@ -50,7 +50,7 @@ class Comment(models.Model):
         return comment
 class Follow(models.Model):
     users=models.ManyToManyField(User,related_name='follow')
-    current_user=models.ForeignKey(User,related_name='c_user',null=True)
+    current_user=models.ForeignKey(User,related_name='c_user',null=True,on_delete=models.CASCADE)
 
     @classmethod
     def follow(cls,current_user,new):
