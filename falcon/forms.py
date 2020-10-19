@@ -1,24 +1,17 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
-class NewProfileForm(forms.ModelForm):
+class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['user']
+        exclude = ['name']
 
-class UploadForm(forms.ModelForm):
-    class Meta:
-        model = Image
-        exclude =['posted_by','profile','likes']
-
-class CommentForm(forms.ModelForm):
+class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        exclude =['poster','image']
+        exclude = ['post_by','post']
 
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
+class NewImageForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        model = Image
+        exclude = ['comments']
