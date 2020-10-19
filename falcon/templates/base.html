@@ -1,36 +1,33 @@
 {% load bootstrap4 %}
-{% load static%}
+
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% if title %}
+      <title>{{title}}</title>
+    {% else %}
+      <title>Insta Replica</title>
+    {% endif %}
 
-<head>
-  <meta charset="utf-8">
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    {% endblock %}
+  </head>
+  <body>
 
-  {% if title %}
-  <title>Instapicha - {{title}}</title>
-  {% else %}
-  <title> Instagram </title>
-  {% endif %}
+    {% include 'navbar.html' %}
 
-<script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  {% block styles %}
-  {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/baseimages.css' %}">
-  {% endblock %}
+    {% block content %}
 
-</head>
+    {% endblock %}
 
-<body>
-  {% include "navbar.html" %}
-  {% block content %}{%endblock%}
+    {% block scripts %}
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+      </script>
+    {% bootstrap_javascript %}
+    {% endblock %}
 
-  {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="{% static 'js/script.js' %}">
-
-  </script>
-  {% bootstrap_javascript %}
-  {% endblock %}
-</body>
-
+  </body>
 </html>
