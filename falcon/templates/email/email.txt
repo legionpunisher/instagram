@@ -1,3 +1,4 @@
+
 Hello {{name}}
 
-Welcome to Dan's version of Instagram. You will find a new experience. ENJOY
+Welcome to the Falcon's future social web where all users get connnected for a better experience

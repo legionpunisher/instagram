@@ -1,19 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
 
-{% block content %}
-<div class="container-fluid">
-  <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="get">
-    <button type="submit" name="button" style="background-color:white;"><i class="fa fa-search" style="color:grey;"></i></button>
-    <input type="search" name="name" placeholder="Search" aria-label="Search" class="form-control container-fluid">
-  </form>
-</div>
-<div class="container" style="margin:10px;">
-  {% for c in content %}
-  <a class="card" href="/profile/{{c.name}}" style="color:black;text-decoration:none;">
-    <div class="card-body">
-      <p>{{c.name}}</p>
+            <form class="form-inline" role="search" action="{% url 'search' %}">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="name">
+                <button type="submit" class="btn btn-outline-white btn-md my-2 btn-sm">Search</button>
+            </form>
+        </div>
     </div>
-  </a>
-  {% endfor%}
+    <div class="col-md-3"></div>
+</div>
+
+<div class="container" style="margin:10px;">
+    {% for c in content %}
+    <a class="card" href="/profile/{{c.name}}" style="color:black;text-decoration:none;">
+        <div class="card-body">
+            <p>{{c.name}}</p>
+        </div>
+    </a>
+    {% endfor%}
 </div>
 {% endblock %}
